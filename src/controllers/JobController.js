@@ -40,7 +40,10 @@ module.exports = {
     },
 
     async update(req, res) {
-        const jobId = req.params.id        
+        const jobId = req.params.id
+        const jobs = await Job.get()
+        
+        const job = jobs.find(job => Number(job.id) === Number(jobId))
 
         const updatedJobs = {
             ...job,
